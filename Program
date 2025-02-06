@@ -1,0 +1,19 @@
+#include <iostream>
+#include <ctime>
+#include <iomanip>
+
+int main() {
+    // Set the timezone to US/Pacific
+    setenv("TZ", "US/Pacific", 1);
+    tzset();
+
+    // Get the current time
+    time_t now = time(0);
+    struct tm *localTime = localtime(&now);
+
+    // Output the current time in US/Pacific timezone
+    std::cout << "Current time in US/Pacific: "
+              << std::put_time(localTime, "%Y-%m-%d %H:%M:%S") << std::endl;
+
+    return 0;
+}
